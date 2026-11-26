@@ -20,6 +20,10 @@
                                 <input type="text" name="client-code" id="client-code" />
                         </p>
                         <p>
+                                <label>Licence Plate (optional)</label>
+                                <input type="text" name="plate" id="plate" />
+                        </p>
+                        <p>
                                 <button type="submit">Register for Parking</button>
                                 <button type="button" onclick="QRCreate()">Create QR Code</button>
                         </p>
@@ -28,7 +32,7 @@
         </main>
         <script>
         function QRCreate() {
-                var code = new QRCode(document.getElementById('qr-code'), "https://parking.mattread.ca/parking.html?client-code=" + document.getElementById('client-code').value); 
+                var code = new QRCode(document.getElementById('qr-code'), "https://parking.mattread.ca/parking.html?client-code=" + document.getElementById('client-code').value) + "plate=" + document.getElementById('plate').value); 
         }
         </script>
 </body>
