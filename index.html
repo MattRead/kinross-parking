@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinross Parking Registration</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
         <!-- Minified version -->
         <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
@@ -18,9 +20,22 @@
                                 <input type="text" name="name" id="client-code" />
                         </p>
                         <p>
-                                <button type="submit">Submit</button>
+                                <label>Licence Plate (optional)</label>
+                                <input type="text" name="plate" id="plate" />
+                        </p>
+                        <p>
+                                <button type="button" onclick="QRCreate()">Register for Parking</button>
+                                <br><b>OR</b><br>
+                                <button type="button" onclick="QRCreate()">Create QR Code</button>
                         </p>
                 </form>
+                <div id="qr-code"></div>
+
+                <script>
+                function QRCreate() {
+                        var code = new QRCode(document.getElementById('qr-code'), "https://parking.mattread.ca/parking.html?client-code=" + document.getElementById('client-code').value + "&plate=" + document.getElementById('plate').value);
+                }
+                </script>
         </main>
 </body>
 </html>
